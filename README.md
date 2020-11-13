@@ -1,1 +1,81 @@
-# Lab-Assignment
+// Lab-Assignment 1 exercise 3
+// Nurasiana Jafar
+
+#include <iostream>
+using namespace std;
+
+void ChangeIt_1 (int n)
+{
+n = 5 ;
+}
+
+void ChangeIt_2 (int *n)
+{
+*n = 6 ;
+}
+
+void ChangeIt_3 (int &n)
+{
+&n = 7 ;
+}
+
+void ChangeIt_4 (int n)
+{
+n = 8 ;
+return n ;
+}
+
+
+void swap (int *n, int *o)
+{
+     int temp;
+     if (*n > *o)
+     
+     {
+     temp = *n ;
+     *n = *o ;
+     *o = temp ;
+     }
+}
+
+double getAverage (int *array, int SIZE)
+{
+     double total;
+     for (int i = 0 ; i < SIZE ; i++)
+     
+     {
+     total = total + *(array + i);
+     }
+
+     double average;
+     average = total/SIZE;
+     return average;
+}
+
+
+int main()
+
+{
+
+int *p;     //declare p as pointers
+int x = 10, y = 7, SIZE = 5, data[SIZE] = { 1, 3, 2, 5, 4 };
+p = &x ;
+
+ChangeIt_1(x) ;
+cout << "ChangeIt_1 : " << *p <<endl ;
+ChangeIt_2(&x) ;
+cout << "ChangeIt_2 : " << *p <<endl ;
+ChangeIt_3(x) ;
+cout << "ChangeIt_3 : " << *p <<endl ;
+x = ChangeIt_4(x);
+cout << "ChangeIt_4 : " << *p <<endl ;
+
+swap (&x, &y) ;
+
+     cout << "x = " << *p <<endl ;
+     p = &y ;
+     cout << "y = " << *p <<endl ;
+
+cout << "Average = " <<getAverage (&data[0], SIZE) ;
+
+}
