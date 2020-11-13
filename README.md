@@ -5,6 +5,7 @@
 using namespace std;
 
 void ChangeIt_1 (int n)
+
 {
 n = 5 ;
 }
