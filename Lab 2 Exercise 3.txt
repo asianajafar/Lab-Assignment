@@ -1,0 +1,97 @@
+//NURASIANA BINTI JAFAR
+//BI19110197
+//LAB 2 EXERCISE 3
+
+
+#include <iostream>
+using namespace std;
+
+// Node class
+class Node {
+	int num;
+	string item_name;
+	double price;
+	Node* next;
+	
+	public:
+		Node () {};
+		void setNum (int Num) { num = Num; };
+		void setIname (string iname) {item_name = iname;};
+		void setPrice (double iprice) {price = iprice;};
+		void setNext (Node *inext) {next = inext;};
+		
+		int getNum() {return num;};
+    	string getIname() {return item_name;};
+    	double getPrice() {return price;};
+    	Node *getNext() {return next;};
+		
+};
+
+// List class
+class List {
+	Node *head;
+	double total = 0.00;
+	
+	public:
+		List() { head = NULL; };
+		void addNode (int num, string iname, double price);
+    	double totalPrice() {return total;};
+        void print();
+	
+};
+
+//Append a note to the linked list
+void List::addNode(int num, string iname, double price)
+{
+    total += price;
+    Node *newNode = new Node();
+    newNode->setNum(num);
+    newNode->setIname(iname);
+    newNode->setPrice(price);
+    newNode->setNext(NULL);
+	
+	//create a temp pointer
+	 Node *temp = head;
+    if(temp != NULL)
+    {
+        while(temp->getNext() != NULL)
+            temp = temp->getNext();
+
+        //point the last node to new node
+        temp->setNext(newNode);
+	}
+	else{
+		//first node in the list
+		head = newNode;
+	}
+}
+
+void List::print(){
+	Node *temp = head;
+	while (temp){
+	    cout << temp->getNum() << " ";
+        cout << temp->getIname();
+        cout << "\t" << temp->getPrice()<< endl;
+        temp = temp->getNext();
+	}
+}
+
+int main(){
+	List pos;
+	pos.addNode(10,"Pagoda Gnut 110g \t", 3.49);
+	pos.addNode(11,"Hup Seng Cream Cracker \t", 4.19);
+	pos.addNode(12,"Yit Poh 2n1 Kopi-O \t", 7.28);
+	pos.addNode(13,"Zoelife SN & Seed \t", 5.24);
+	pos.addNode(14,"Gatsby S/FO Wet&Hard \t", 16.99);
+	pos.addNode(15,"GB W/G U/Hold 150g \t", 6.49);
+	
+	cout << "=====================================" << endl;
+    cout << "BC Items \t\t\t" << "Price" << endl;
+    cout << "=====================================" << endl;
+    pos.print();
+    cout << "=====================================" << endl;
+    cout << "Total (GST Incl.)\t\t" << pos.totalPrice() << endl;
+    cout << "=====================================" << endl;
+
+    return 0;
+}
