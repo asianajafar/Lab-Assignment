@@ -1,0 +1,30 @@
+//NURASIANA BINTI JAFAR
+//BI19110197
+
+#include<iostream>
+#define Max 50         // max. 50 elements
+using namespace std;
+int main()
+{
+ int a[Max], size, temp;
+ cout<<"Enter the size of array: ";   // read size
+ cin>>size;
+ for(int i=0;i<size;++i){
+     cout<<"Enter the array element "<< i+1 << " : ";  // read array elements
+     cin>>a[i];
+ }    
+ for(int i=1; i<size; ++i)   // bubble sorting
+ {
+  for(int j=0; j<(size-i); ++j)
+   if(a[j]>a[j+1])
+   {
+    temp=a[j];
+    a[j]=a[j+1];
+    a[j+1]=temp;
+   }
+ }
+ cout<<"Array after sort: ";
+ for(int i=0; i<size; ++i)   // print sorted list
+  cout<<a[i]<<" ";
+ return 0;
+}
